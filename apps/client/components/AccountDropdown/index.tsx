@@ -32,12 +32,14 @@ import {
 } from "@/shadcn/ui/dropdown-menu";
 import { useUser } from "../../store/session";
 import { useRouter } from "next/router";
+import useTranslation from "next-translate/useTranslation";
 import { deleteCookie, getCookie } from "cookies-next";
 
 export function AccountDropdown() {
   const { user } = useUser();
 
   const router = useRouter();
+  const { t } = useTranslation("peppermint");
 
   async function logout() {
     const res = await fetch(`/api/v1/auth/user/${user.id}/logout`, {
@@ -62,7 +64,7 @@ export function AccountDropdown() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56 mr-4">
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuLabel>{t("my_account")}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem
@@ -70,14 +72,14 @@ export function AccountDropdown() {
             onClick={() => router.push("/profile")}
           >
             <User className="mr-2 h-4 w-4" />
-            <span>Profile</span>
+            <span>{t("profile")}</span>
           </DropdownMenuItem>
           <DropdownMenuItem
             className="hover:cursor-pointer"
             onClick={() => router.push("/settings/notifications")}
           >
             <Settings className="mr-2 h-4 w-4" />
-            <span>Settings</span>
+            <span>{t("sl_settings")}</span>
           </DropdownMenuItem>
           {/* <DropdownMenuItem>
             <Keyboard className="mr-2 h-4 w-4" />
@@ -135,7 +137,7 @@ export function AccountDropdown() {
           onClick={() => router.push("https://discord.gg/XDxnWxCqnc")}
         >
           <LifeBuoy className="mr-2 h-4 w-4" />
-          <span>Support</span>
+          <span>{t("support")}</span>
         </DropdownMenuItem>
         <DropdownMenuItem disabled>
           <Cloud className="mr-2 h-4 w-4" />
@@ -147,7 +149,7 @@ export function AccountDropdown() {
           onClick={() => logout()}
         >
           <LogOut className="mr-2 h-4 w-4" />
-          <span>Log out</span>
+          <span>{t("logout")}</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

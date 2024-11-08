@@ -116,7 +116,7 @@ export function userRoutes(fastify: FastifyInstance) {
 
   // Mark Notification as read
   fastify.get(
-    "/api/v1/user/notifcation/:id",
+    "/api/v1/user/notification/:id",
 
     async (request: FastifyRequest, reply: FastifyReply) => {
       const bearer = request.headers.authorization!.split(" ")[1];

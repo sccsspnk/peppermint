@@ -19,13 +19,13 @@ function classNames(...classes) {
 }
 
 const type = [
-  { id: 5, name: "Incident" },
-  { id: 1, name: "Service" },
-  { id: 2, name: "Feature" },
-  { id: 3, name: "Bug" },
-  { id: 4, name: "Maintenance" },
-  { id: 6, name: "Access" },
-  { id: 8, name: "Feedback" },
+  { id: 1, name: useTranslation("peppermint").t("type_service") },
+  { id: 2, name: useTranslation("peppermint").t("type_feature") },
+  { id: 3, name: useTranslation("peppermint").t("type_bug") },
+  { id: 4, name: useTranslation("peppermint").t("type_maintenance") },
+  { id: 5, name: useTranslation("peppermint").t("type_incident") },
+  { id: 6, name: useTranslation("peppermint").t("type_access") },
+  { id: 7, name: useTranslation("peppermint").t("type_feedback") },
 ];
 
 export default function CreateTicketModal({ keypress, setKeyPressDown }) {

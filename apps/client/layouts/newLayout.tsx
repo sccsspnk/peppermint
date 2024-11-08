@@ -451,7 +451,7 @@ export default function NewLayout({ children }: any) {
                               aria-hidden="true"
                             />
                             <span className="whitespace-nowrap">
-                              {t("admin_settings")}
+                              {t("main__navigation__header__send_feedback")}
                             </span>
                             <div className="flex w-full justify-end float-right">
                               <span className="flex h-6 w-6 shrink-0 items-center bg-transparent border-none justify-center text-md font-medium">
@@ -507,7 +507,7 @@ export default function NewLayout({ children }: any) {
                 >
                   <Link href="/notifications">
                     <Bell className="h-4 w-4 text-foreground" />
-                    {user.notifcations.filter(
+                    {user.notifications.filter(
                       (notification) => !notification.read
                     ).length > 0 && (
                       <svg
@@ -531,7 +531,7 @@ export default function NewLayout({ children }: any) {
                       variant="outline"
                       className="text-foreground hover:cursor-pointer whitespace-nowrap"
                     >
-                      Send Feedback
+                      {t("main__navigation__header__send_feedback")}
                     </Button>
                   </Link>
                 )}

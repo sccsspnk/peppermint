@@ -535,7 +535,7 @@ export default function Ticket() {
                             className="min-w-[160px]"
                           >
                             <DropdownMenuLabel>
-                              <span>Issue Actions</span>
+                              <span>{t("issue_actions")}</span>
                             </DropdownMenuLabel>
                             <DropdownMenuSeparator />
                             {data.ticket.hidden ? (
@@ -544,7 +544,7 @@ export default function Ticket() {
                                 onClick={() => hide(false)}
                               >
                                 <Eye className="h-4 w-4" />
-                                <span>Show Issue</span>
+                                <span>{t("show_issue")}</span>
                               </DropdownMenuItem>
                             ) : (
                               <DropdownMenuItem
@@ -552,7 +552,7 @@ export default function Ticket() {
                                 onClick={() => hide(true)}
                               >
                                 <EyeOff className="h-4 w-4" />
-                                <span>Hide Issue</span>
+                                <span>{t("hide_issue")}</span>
                               </DropdownMenuItem>
                             )}
                             {data.ticket.locked ? (
@@ -561,7 +561,7 @@ export default function Ticket() {
                                 onClick={() => lock(false)}
                               >
                                 <Unlock className="h-4 w-4" />
-                                <span>Unlock Issue</span>
+                                <span>{t("unlock_issue")}</span>
                               </DropdownMenuItem>
                             ) : (
                               <DropdownMenuItem
@@ -569,7 +569,7 @@ export default function Ticket() {
                                 onClick={() => lock(true)}
                               >
                                 <Lock className="h-4 w-4" />
-                                <span>Lock Issue</span>
+                                <span>{t("lock_issue")}</span>
                               </DropdownMenuItem>
                             )}
                             <DropdownMenuSeparator />
@@ -578,7 +578,7 @@ export default function Ticket() {
                               onClick={() => deleteIssue()}
                             >
                               <Trash2 className="h-4 w-4" />
-                              <span className="">Delete Issue</span>
+                              <span className="">{t("delete")}</span>
                             </DropdownMenuItem>
                           </DropdownMenuContent>
                         </DropdownMenu>
@@ -631,7 +631,7 @@ export default function Ticket() {
                     {data.ticket.fromImap ? (
                       <>
                         <span className="font-bold">{data.ticket.email}</span>
-                        <span>created via email at </span>
+                        <span>{t("created_via_email")} </span>
                         <span className="font-bold">
                           {moment(data.ticket.createdAt).format("DD/MM/YYYY")}
                         </span>
@@ -641,17 +641,17 @@ export default function Ticket() {
                         {data.ticket.createdBy ? (
                           <div className="flex flex-row space-x-1">
                             <span>
-                              Created by
+                              {t("created_by")}
                               <strong>
                                 {data.ticket.createdBy.name}
-                              </strong> at{" "}
+                              </strong> {t("at")}{" "}
                             </span>
                             <span className="">
                               {moment(data.ticket.createdAt).format("LLL")}
                             </span>
                             {data.ticket.name && (
                               <span>
-                                for <strong>{data.ticket.name}</strong>
+                                {t("for")} <strong>{data.ticket.name}</strong>
                               </span>
                             )}
                             {data.ticket.email && (
@@ -662,14 +662,14 @@ export default function Ticket() {
                           </div>
                         ) : (
                           <div className="flex flex-row space-x-1">
-                            <span>Created at </span>
+                            <span>{t("created_at")} </span>
                             <span className="">
                               <strong>
                                 {moment(data.ticket.createdAt).format("LLL")}
                               </strong>
                               {data.ticket.client && (
                                 <span>
-                                  for <strong>{data.ticket.client.name}</strong>
+                                  {t("for")} <strong>{data.ticket.client.name}</strong>
                                 </span>
                               )}
                             </span>
@@ -760,11 +760,11 @@ export default function Ticket() {
                                               } dark:text-white`}
                                             >
                                               {item.public
-                                                ? "Publicly"
-                                                : "Internally"}
+                                                ? t("publicly")
+                                                : t("internally")}
                                             </span>
                                             <span className="text-xs text-gray-500 dark:text-white">
-                                              commented at
+                                              {t("commented_at")}
                                             </span>
 
                                             <span className="text-xs text-gray-500 dark:text-white">
@@ -800,8 +800,8 @@ export default function Ticket() {
                                   className="block w-full bg-transparent rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-background focus:ring-0 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6"
                                   placeholder={
                                     data.ticket.locked
-                                      ? "This ticket is locked"
-                                      : "Leave a comment"
+                                      ? t("ticket_locked")
+                                      : t("leave_comment")
                                   }
                                   defaultValue={""}
                                   onChange={(e) => setComment(e.target.value)}
@@ -821,7 +821,7 @@ export default function Ticket() {
                                       } relative inline-flex h-6 w-11 items-center rounded-full`}
                                     >
                                       <span className="sr-only">
-                                        Enable notifications
+                                        {t("enable_notifications")}
                                       </span>
                                       <span
                                         className={`${
@@ -831,8 +831,8 @@ export default function Ticket() {
                                         } inline-block h-4 w-4 transform rounded-full bg-white transition`}
                                       />
                                     </Switch>
-                                    <Tooltip content="Enabling this will mean the email registered to the ticket will get a reply based on your comment.">
-                                      <Text> Public Reply</Text>
+                                    <Tooltip content={t("label_enable_send_to_user")}>
+                                      <Text> {t("send_to_user")}</Text>
                                     </Tooltip>
                                   </div>
                                 </Text>

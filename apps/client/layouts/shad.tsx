@@ -62,7 +62,7 @@ export default function ShadLayout({ children }: any) {
                   >
                     <Link href="/notifications">
                       <Bell className="h-4 w-4 text-foreground" />
-                      {user.notifcations.filter(
+                      {user.notifications.filter(
                         (notification) => !notification.read
                       ).length > 0 && (
                         <svg
@@ -86,7 +86,7 @@ export default function ShadLayout({ children }: any) {
                         variant="outline"
                         className="text-foreground hover:cursor-pointer whitespace-nowrap"
                       >
-                        Send Feedback
+                        {t("main__navigation__header__send_feedback")}
                       </Button>
                     </Link>
                   )}

@@ -41,43 +41,43 @@ export default function AdminLayout({ children }: any) {
 
   const navigation = [
     {
-      name: "Back",
+      name: t("label__navigation__option__back"),
       href: "/",
       current: null,
       icon: MoveLeft,
     },
     {
-      name: t("sl_users"),
+      name: t("label__navigation__option__users"),
       href: "/admin/users/internal",
       current: location.pathname === "/admin/users/internal",
       icon: UserRound,
     },
     {
-      name: t("sl_clients"),
+      name: t("label__navigation__option__clients"),
       href: "/admin/clients",
       current: location.pathname === "/admin/clients",
       icon: ContactIcon,
     },
     {
-      name: "Email Queues",
+      name: t("label__navigation__option__mail_queues"),
       href: "/admin/email-queues",
       current: location.pathname === "/admin/email-queues",
       icon: Mail,
     },
     {
-      name: "Webhooks",
+      name: t("label__navigation__option__webhooks"),
       href: "/admin/webhooks",
       current: location.pathname === "/admin/webhooks",
       icon: Webhook,
     },
     {
-      name: "SMTP Email",
+      name: t("label__navigation__option__smtp_mail"),
       href: "/admin/smtp",
       current: location.pathname === "/admin/smtp",
       icon: Mailbox,
     },
     {
-      name: "Authentication",
+      name: t("label__navigation__option__authentification"),
       href: "/admin/authentication",
       current: location.pathname === "/admin/authentication",
       icon: KeyRound,
@@ -278,7 +278,7 @@ export default function AdminLayout({ children }: any) {
                   >
                     <Link href="/notifications">
                       <InboxStackIcon className="h-4 w-4 text-foreground" />
-                      {user.notifcations.filter(
+                      {user.notifications.filter(
                         (notification) => !notification.read
                       ).length > 0 && (
                         <svg
@@ -302,7 +302,7 @@ export default function AdminLayout({ children }: any) {
                         variant="outline"
                         className="text-foreground hover:cursor-pointer whitespace-nowrap"
                       >
-                        Send Feedback
+                        {t("main__navigation__header__send_feedback")}
                       </Button>
                     </Link>
                   )}

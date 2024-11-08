@@ -1,3 +1,5 @@
+import useTranslation from "next-translate/useTranslation";
+
 export default function BlankPage() {
   return (
     <div className="flex flex-col">
@@ -8,7 +10,7 @@ export default function BlankPage() {
         </h1>
       </div>
       <h1 className="font-bold text-xl text-center">
-        Welcome to peppermint! Thank you for checking us out!
+        {useTranslation("peppermint").t("admin_layout_welcome")}
       </h1>
     </div>
   );

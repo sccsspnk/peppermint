@@ -86,14 +86,14 @@ export default function Home() {
   }
 
   const stats = [
-    { name: "Open Issues", stat: openTickets, href: "/issues" },
+    { name: t("label__board__open_issues"), stat: openTickets, href: "/issues" },
     {
-      name: "Completed Issues",
+      name: t("label__board__completed_issues"),
       stat: completedTickets,
       href: "/issues?filter=closed",
     },
     {
-      name: "Unassigned Issues",
+      name: t("label__board__unassigned_issues"),
       stat: unassigned,
       href: "/issues?filter=unassigned",
     },
@@ -170,13 +170,13 @@ export default function Home() {
                       />
                     </svg>
                     <span className="mt-2 block text-sm font-semibold text-gray-900 dark:text-white">
-                      Create your first Issue
+                      {t("label__board__button__create_issue")}
                     </span>
                   </button>
                 </>
               ) : (
                 <>
-                  <span className="font-bold text-2xl">Recent Issues</span>
+                  <span className="font-bold text-2xl">{t("label__board__recent_issues")}</span>
                   <div className="-mx-4 sm:-mx-0 w-full">
                     <table className="min-w-full divide-y divide-gray-300">
                       <thead>
@@ -185,32 +185,32 @@ export default function Home() {
                             scope="col"
                             className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 dark:text-white sm:pl-0"
                           >
-                            {t("title")}
+                            {t("label__board__table__issue_title")}
                           </th>
                           <th
                             scope="col"
                             className="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white lg:table-cell"
                           >
-                            {t("priority")}
+                            {t("label__board__table__issue_priority")}
                           </th>
                           <th
                             scope="col"
                             className="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white sm:table-cell"
                           >
-                            {t("status")}
+                            {t("label__board__table__issue_status")}
                           </th>
                           <th
                             scope="col"
                             className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white"
                           >
-                            {t("created")}
+                            {t("label__board__table__issue_created_at")}
                           </th>
 
                           <th
                             scope="col"
                             className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white"
                           >
-                            {t("assigned_to")}
+                            {t("label__board__table__issue_assigned_to")}
                           </th>
                         </tr>
                       </thead>
@@ -225,24 +225,24 @@ export default function Home() {
                               <td className="sm:max-w-[280px] 2xl:max-w-[720px] truncate py-1 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-white sm:pl-0">
                                 {item.title}
                                 <dl className="font-normal lg:hidden">
-                                  <dt className="sr-only sm:hidden">Email</dt>
+                                  <dt className="sr-only sm:hidden">{t("commonly_used__email")}</dt>
                                   <dd className="mt-1 truncate text-gray-500 sm:hidden">
                                     {item.email}
                                   </dd>
                                 </dl>
                               </td>
                               <td className="hidden px-3 py-1 text-sm text-gray-500 lg:table-cell w-[64px]">
-                                {item.priority === "Low" && (
+                                {item.priority.toLowerCase( ) === "low" && (
                                   <span className="inline-flex w-full justify-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700  ring-1 ring-inset ring-blue-600/20">
                                     {item.priority}
                                   </span>
                                 )}
-                                {item.priority === "Normal" && (
+                                {item.priority.toLowerCase( ) === "normal" && (
                                   <span className="inline-flex items-center w-full justify-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
                                     {item.priority}
                                   </span>
                                 )}
-                                {item.priority === "High" && (
+                                {item.priority.toLowerCase( ) === "high" && (
                                   <span className="inline-flex items-center w-full justify-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/20">
                                     {item.priority}
                                   </span>
@@ -259,7 +259,7 @@ export default function Home() {
                                       >
                                         <circle cx={3} cy={3} r={3} />
                                       </svg>
-                                      {t("closed")}
+                                      {t("statuses_closed")}
                                     </span>
                                   </div>
                                 ) : (
@@ -272,7 +272,7 @@ export default function Home() {
                                       >
                                         <circle cx={3} cy={3} r={3} />
                                       </svg>
-                                      {t("open")}
+                                      {t("statuses_opened")}
                                     </span>
                                   </>
                                 )}

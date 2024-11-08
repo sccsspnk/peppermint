@@ -1,4 +1,5 @@
 import { toast } from "@/shadcn/hooks/use-toast";
+import useTranslation from "next-translate/useTranslation";
 import { setCookie } from "cookies-next";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -6,6 +7,7 @@ import { useEffect, useState } from "react";
 
 export default function Login({}) {
   const router = useRouter();
+  const { t } = useTranslation("peppermint");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,9 +37,8 @@ export default function Login({}) {
         } else {
           toast({
             variant: "destructive",
-            title: "Error",
-            description:
-              "There was an error logging in, please try again. If this issue persists, please contact support via the discord.",
+            title: t("error__title__auth_login__signin"),
+            description: t("error__body__auth_login__signin"),
           });
         }
       });
@@ -56,9 +57,8 @@ export default function Login({}) {
           if (!res.success) {
             toast({
               variant: "destructive",
-              title: "Error",
-              description:
-                "There was an error logging in, please try again. If this issue persists, please contact support via the discord.",
+              title: t("error__title__auth_login__signin"),
+              description: t("error__body__auth_login__signin"),
             });
           }
         }
@@ -73,9 +73,8 @@ export default function Login({}) {
     if (router.query.error) {
       toast({
         variant: "destructive",
-        title: "Account Error - No Account Found",
-        description:
-          "It looks like you have tried to use SSO with an account that does not exist. Please try again or contact your admin to get you set up first.",
+        title: t("error__title__auth_login__signin_sso"),
+        description: t("error__body__auth_login__signin_sso"),
       });
     }
   }, [router]);
@@ -84,7 +83,7 @@ export default function Login({}) {
     <div className="min-h-screen bg-background flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-6 text-center text-3xl font-extrabold text-foreground">
-          Welcome to Peppermint
+          {t("label__auth_login__welcome")}
         </h2>
       </div>
 
@@ -99,7 +98,7 @@ export default function Login({}) {
                   htmlFor="email"
                   className="block text-sm font-medium text-foreground"
                 >
-                  Email address
+                  {t("commonly_used__email")}
                 </label>
                 <div className="mt-1">
                   <input
@@ -111,7 +110,7 @@ export default function Login({}) {
                     onChange={(e) => setEmail(e.target.value)}
                     className="appearance-none block w-full px-3 py-2 border text-gray-900 border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
                     onKeyPress={(event) => {
-                      if (event.key === "Enter") {
+                      if (event.key.toLowerCase() === "Enter") {
                         postData();
                       }
                     }}
@@ -124,7 +123,7 @@ export default function Login({}) {
                   htmlFor="password"
                   className="block text-sm font-medium text-foreground"
                 >
-                  Password
+                  {t("commonly_used__password")}
                 </label>
                 <div className="mt-1">
                   <input
@@ -136,7 +135,7 @@ export default function Login({}) {
                     onChange={(e) => setPassword(e.target.value)}
                     className="appearance-none block w-full px-3 py-2 border text-gray-900 border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
                     onKeyPress={(event) => {
-                      if (event.key === "Enter") {
+                      if (event.key.toLowerCase() === "Enter") {
                         postData();
                       }
                     }}
@@ -150,7 +149,7 @@ export default function Login({}) {
                     href="/auth/forgot-password"
                     className="font-medium text-indigo-600 hover:text-indigo-500"
                   >
-                    Forgot your password?
+                    {t("label__auth_login__forgot_password")}
                   </Link>
                 </div>
               </div>
@@ -161,7 +160,7 @@ export default function Login({}) {
                   onClick={postData}
                   className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                 >
-                  Sign In
+                  {t("label__button__auth_login__signin")}
                 </button>
 
                 {url && (
@@ -170,7 +169,7 @@ export default function Login({}) {
                     onClick={() => router.push(url)}
                     className="w-full flex justify-center py-2 px-4 border rounded-md shadow-sm text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                   >
-                    Sign in with OIDC
+                    {t("label__button__auth_login__signin_with_oidc")}
                   </button>
                 )}
               </div>
@@ -180,14 +179,14 @@ export default function Login({}) {
 
         <div className="mt-8 text-center flex flex-col space-y-2">
           <span className="font-bold text-foreground">
-            Built with 💚 by Peppermint Labs
+            {t("commonly_used__copyright")}
           </span>
           <a
             href="https://docs.peppermint.sh/"
             target="_blank"
             className="text-foreground"
           >
-            Documentation
+            {t("commonly_used__documentation")}
           </a>
         </div>
       </div>

@@ -162,30 +162,30 @@ export default function Tickets() {
                       className="h-6 bg-transparent"
                     >
                       <Filter className="mr-2 h-4 w-4" />
-                      <span className="hidden sm:block">Filters</span>
+                      <span className="hidden sm:block">{t("filters")}</span>
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent className="w-[300px] p-0" align="start">
                     {!activeFilter ? (
                       <Command>
-                        <CommandInput placeholder="Search filters..." />
+                        <CommandInput placeholder={t("search_for_filters")} />
                         <CommandList>
-                          <CommandEmpty>No results found.</CommandEmpty>
+                          <CommandEmpty>{t("no_results_found")}.</CommandEmpty>
                           <CommandGroup>
                             <CommandItem
                               onSelect={() => setActiveFilter("priority")}
                             >
-                              Priority
+                              {t("priority")}
                             </CommandItem>
                             <CommandItem
                               onSelect={() => setActiveFilter("status")}
                             >
-                              Status
+                              {t("status")}
                             </CommandItem>
                             <CommandItem
                               onSelect={() => setActiveFilter("assignee")}
                             >
-                              Assigned To
+                              {t("assigned_to")}
                             </CommandItem>
                           </CommandGroup>
                         </CommandList>
@@ -193,13 +193,13 @@ export default function Tickets() {
                     ) : activeFilter === "priority" ? (
                       <Command>
                         <CommandInput
-                          placeholder="Search priority..."
+                          placeholder={t("search_for_priority")}
                           value={filterSearch}
                           onValueChange={setFilterSearch}
                         />
                         <CommandList>
-                          <CommandEmpty>No priorities found.</CommandEmpty>
-                          <CommandGroup heading="Priority">
+                          <CommandEmpty>{t("no_priorities_found")}</CommandEmpty>
+                          <CommandGroup heading={t("priority")}>
                             {filteredPriorities.map((priority) => (
                               <CommandItem
                                 key={priority}
@@ -228,7 +228,7 @@ export default function Tickets() {
                               }}
                               className="justify-center text-center"
                             >
-                              Back to filters
+                              {t("back_to_filters")}
                             </CommandItem>
                           </CommandGroup>
                         </CommandList>
@@ -236,13 +236,13 @@ export default function Tickets() {
                     ) : activeFilter === "status" ? (
                       <Command>
                         <CommandInput
-                          placeholder="Search status..."
+                          placeholder={t("search_for_status")}
                           value={filterSearch}
                           onValueChange={setFilterSearch}
                         />
                         <CommandList>
-                          <CommandEmpty>No statuses found.</CommandEmpty>
-                          <CommandGroup heading="Status">
+                          <CommandEmpty>{t("no_statuses_found")}</CommandEmpty>
+                          <CommandGroup heading={t("status")}>
                             {filteredStatuses.map((status) => (
                               <CommandItem
                                 key={status}
@@ -271,7 +271,7 @@ export default function Tickets() {
                               }}
                               className="justify-center text-center"
                             >
-                              Back to filters
+                              {t("back_to_filters")}
                             </CommandItem>
                           </CommandGroup>
                         </CommandList>
@@ -279,12 +279,12 @@ export default function Tickets() {
                     ) : activeFilter === "assignee" ? (
                       <Command>
                         <CommandInput
-                          placeholder="Search assignee..."
+                          placeholder={t("search_for_assignees")}
                           value={filterSearch}
                           onValueChange={setFilterSearch}
                         />
                         <CommandList>
-                          <CommandEmpty>No assignees found.</CommandEmpty>
+                          <CommandEmpty>{t("no_assignees_found")}</CommandEmpty>
                           <CommandGroup heading="Assigned To">
                             {filteredAssignees?.map((name) => (
                               <CommandItem
@@ -314,7 +314,7 @@ export default function Tickets() {
                               }}
                               className="justify-center text-center"
                             >
-                              Back to filters
+                              {t("back_to_filters")}
                             </CommandItem>
                           </CommandGroup>
                         </CommandList>
@@ -363,7 +363,7 @@ export default function Tickets() {
                         setSelectedAssignees([]);
                       }}
                     >
-                      Clear all
+                      {t("clear_all")}
                     </Button>
                   )}
                 </div>
@@ -375,13 +375,13 @@ export default function Tickets() {
                 let p = ticket.priority;
                 let badge;
 
-                if (p === "Low") {
+                if (p.toLowerCase( ) === "low") {
                   badge = low;
                 }
-                if (p === "Normal") {
+                if (p.toLowerCase( ) === "normal") {
                   badge = normal;
                 }
-                if (p === "high") {
+                if (p.toLowerCase( ) === "high") {
                   badge = high;
                 }
 
@@ -520,7 +520,7 @@ export default function Tickets() {
                     />
                   </svg>
                   <span className="mt-2 block text-sm font-semibold text-gray-900">
-                    Create your first ticket
+                    {t("create_ticket")}
                   </span>
                 </button>
               </div>

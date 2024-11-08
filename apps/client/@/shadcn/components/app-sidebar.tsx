@@ -56,14 +56,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     ],
     navMain: [
       {
-        title: t("sl_dashboard"),
+        title: t("label__navigation__option__dashboard__dashboard"),
         url: `/${locale}/`,
         icon: Building,
         isActive: location.pathname === "/" ? true : false,
         initial: "h",
       },
       {
-        title: "Documents",
+        title: t("label__navigation__option__dashboard__documents"),
         url: `/${locale}/documents`,
         icon: FileText,
         isActive: location.pathname === "/documents" ? true : false,
@@ -71,26 +71,26 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         internal: true,
       },
       {
-        title: "Issues",
+        title: t("label__navigation__option__dashboard__issues"),
         url: `/${locale}/issues`,
         icon: SquareKanban,
         isActive: location.pathname === "/issues" ? true : false,
         initial: "t",
         items: [
           {
-            title: "Open",
+            title: t("label__navigation__option__dashboard__issues__open"),
             url: "/issues/open",
             initial: "o",
           },
           {
-            title: "Closed",
+            title: t("label__navigation__option__dashboard__issues__closed"),
             url: "/issues/closed",
             initial: "f",
           },
         ],
       },
       {
-        title: "Admin",
+        title: t("label__navigation__option__dashboard__admin_settings"),
         url: "/admin",
         icon: Settings,
         isActive: true,
@@ -159,7 +159,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         {/* <TeamSwitcher teams={data.teams} /> */}
-        <div className="flex items-center gap-2 ">
+        <div className="flex items-center gap-2">
           <div className="flex aspect-square size-8 items-center justify-center rounded-lg text-sidebar-primary-foreground">
             <img src="/favicon/favicon-32x32.png" className="size-4" />
           </div>

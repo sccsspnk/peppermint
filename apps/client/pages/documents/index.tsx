@@ -92,7 +92,7 @@ export default function NoteBooksIndex() {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        title: "Untitled",
+        title: t("document_untitled"),
         content: "",
       }),
     })
@@ -130,18 +130,18 @@ export default function NoteBooksIndex() {
           </h1>
           <div className="flex items-center w-full justify-center flex-row space-x-2 flex-1 mr-2">
             <Input
-              placeholder="Search documents..."
+              placeholder={t("search_documents")}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="max-w-xs"
             />
             <Select value={sortBy} onValueChange={setSortBy}>
               <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Sort by" />
+                <SelectValue placeholder={t("sort_by")} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="updatedAt">Last Updated</SelectItem>
-                <SelectItem value="createdAt">Created Date</SelectItem>
+                <SelectItem value="updatedAt">{t("updated_at")}</SelectItem>
+                <SelectItem value="createdAt">{t("created_at")}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -151,13 +151,13 @@ export default function NoteBooksIndex() {
         </div>
       </div>
       <div className="mt-8 w-full flex justify-center">
-        {status === "loading" && <p>Loading...</p>}
-        {status === "error" && <p>Error loading documents.</p>}
+        {status === "loading" && <p>{t("loading")}</p>}
+        {status === "error" && <p>{t("error_document_load")}</p>}
         {data && data.notebooks.length === 0 ? (
           <div className="text-center py-8">
-            <p className="text-sm text-gray-500">No documents found.</p>
+            <p className="text-sm text-gray-500">{t("no_documents_found")}</p>
             <Button variant="outline" size="sm" onClick={() => createNew()}>
-              New Document
+              {t("new_document")}
             </Button>
           </div>
         ) : (
@@ -165,7 +165,7 @@ export default function NoteBooksIndex() {
             <div className="flex flex-col mb-4">
               <div className="flex w-full justify-end">
                 <Button variant="outline" size="sm" onClick={() => createNew()}>
-                  New Document
+                  {t("new_document")}
                 </Button>
               </div>
             </div>

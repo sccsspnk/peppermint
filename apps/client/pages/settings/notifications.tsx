@@ -19,7 +19,7 @@ export default function UserNotifications() {
   const [ticket_comments, setTicket_comments] = useState(user.ticket_comments);
 
   async function updateNotifications() {
-    await fetch(`/api/v1/auth/profile/notifcations/emails`, {
+    await fetch(`/api/v1/auth/profile/notifications/emails`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

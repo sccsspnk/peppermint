@@ -1,10 +1,12 @@
 import { toast } from "@/shadcn/hooks/use-toast";
+import useTranslation from "next-translate/useTranslation";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
 export default function Login({}) {
   const router = useRouter();
+  const { t } = useTranslation("peppermint");
 
   const [email, setEmail] = useState("");
 
@@ -20,16 +22,15 @@ export default function Login({}) {
 
           toast({
             variant: "default",
-            title: "Success",
-            description: "Password reset email is on its way.",
+            title: t("success_title"),
+            description: t("mail_reset_link"),
           });
           router.push("/auth/login");
         } else {
           toast({
             variant: "destructive",
-            title: "Error", 
-            description:
-              "There was an error with this request, please try again. If this issue persists, please contact support via the discord.",
+            title: t("error_title"), 
+            description: t("error_request"),
           });
         }
       });
@@ -46,7 +47,7 @@ export default function Login({}) {
           />
         </a>
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Request Password Reset
+          {t("request_pw_reset")}
         </h2>
       </div>
 
@@ -58,7 +59,7 @@ export default function Login({}) {
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-700"
               >
-                Email address
+                {t("email")}
               </label>
               <div className="mt-1">
                 <input
@@ -79,7 +80,7 @@ export default function Login({}) {
                   href="/auth/login"
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
-                  Remember your password?
+                  {t("remember_password")}
                 </Link>
               </div>
             </div>
@@ -90,16 +91,16 @@ export default function Login({}) {
                 onClick={postData}
                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
               >
-                Submit Request
+                {t("submit_request")}
               </button>
             </div>
           </div>
         </div>
 
         <div className="mt-8 text-center flex flex-col space-y-2">
-          <span className="font-bold">Built with 💚 by Peppermint Labs</span>
+          <span className="font-bold">{t("copyright")}</span>
           <a href="https://docs.peppermint.sh/" target="_blank">
-            Documentation
+            {t("documentation")}
           </a>
         </div>
       </div>

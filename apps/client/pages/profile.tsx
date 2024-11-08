@@ -117,6 +117,7 @@ export default function UserProfile() {
                     <option value="hu">Hungarian</option>
                     <option value="th">Thai (ภาษาไทย)</option>
                     <option value="zh-CN">Simplified Chinese (简体中文)</option>
+                    <option value="ru">Russian (русский)</option>
                   </select>
                 </div>
               </div>

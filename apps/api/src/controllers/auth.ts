@@ -734,7 +734,7 @@ export function authRoutes(fastify: FastifyInstance) {
 
         const config = await prisma.config.findFirst();
 
-        const notifcations = await prisma.notifications.findMany({
+        const notifications = await prisma.notifications.findMany({
           where: { userId: user!.id },
           orderBy: {
             createdAt: "desc",
@@ -753,7 +753,7 @@ export function authRoutes(fastify: FastifyInstance) {
           ticket_assigned: user!.notify_ticket_assigned,
           sso_status: config!.sso_active,
           version: config!.client_version,
-          notifcations,
+          notifications,
           external_user: user!.external_user,
         };
 
@@ -899,7 +899,7 @@ export function authRoutes(fastify: FastifyInstance) {
 
   // Update a users Email notification settings
   fastify.put(
-    "/api/v1/auth/profile/notifcations/emails",
+    "/api/v1/auth/profile/notifications/emails",
     async (request: FastifyRequest, reply: FastifyReply) => {
       const bearer = request.headers.authorization!.split(" ")[1];
 

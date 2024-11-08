@@ -14,6 +14,7 @@ import {
 } from "@/shadcn/ui/dropdown-menu";
 import { Ellipsis } from "lucide-react";
 import { useUser } from "../../store/session";
+import { t } from "nextra/dist/types-BhjhW0gX";
 
 function isHTML(str) {
   var a = document.createElement("div");
@@ -145,7 +146,7 @@ export default function NotebookEditor() {
   }, [initialContent]);
 
   if (editor === undefined) {
-    return "Loading content...";
+    return t("loading");
   }
 
   const handleInputChange = (editor) => {
@@ -156,10 +157,10 @@ export default function NotebookEditor() {
     <>
       <div className="flex flex-row items-center justify-end py-1 px-6 space-x-4 mt-2">
         {saving ? (
-          <span className="text-xs">saving ....</span>
+          <span className="text-xs">{t("saving")}</span>
         ) : (
           <span className="text-xs cursor-pointer">
-            last saved: {moment(lastSaved).format("hh:mm:ss")}
+            {t("last_saved")}: {moment(lastSaved).format("hh:mm:ss")}
           </span>
         )}
         <DropdownMenu>
@@ -171,7 +172,7 @@ export default function NotebookEditor() {
               className="hover:bg-red-600"
               onClick={() => deleteNotebook()}
             >
-              Delete
+              {t("delete")}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -193,6 +194,7 @@ export default function NotebookEditor() {
               sideMenu={false}
               className="m-0 p-0"
               onChange={handleInputChange}
+              placeholder={t("document_content_placeholder")}
             />
           </div>
         </div>

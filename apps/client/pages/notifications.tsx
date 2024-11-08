@@ -15,7 +15,7 @@ export default function Tickets() {
   const { user, fetchUserProfile } = useUser();
 
   async function markasread(id) {
-    await fetch(`/api/v1/user/notifcation/${id}`, {
+    await fetch(`/api/v1/user/notification/${id}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -28,13 +28,11 @@ export default function Tickets() {
       <div className="flex flex-col">
         <div className="py-2 px-6 flex flex-row items-center justify-between bg-gray-200 dark:bg-[#0A090C] border-b-[1px]">
           <span className="text-sm font-bold">
-            You have {user.notifcations.filter((e) => !e.read).length} unread
-            notifcations
-            {user.notifcations.length > 1 ? "'s" : ""}
+            {t("count_of_unread_notifications")} {user.notifications.filter((e) => !e.read).length}
           </span>
         </div>
-        {user.notifcations.filter((e) => !e.read).length > 0 ? (
-          user.notifcations
+        {user.notifications.filter((e) => !e.read).length > 0 ? (
+          user.notifications
             .filter((e) => !e.read)
             .map((item) => {
               return (
@@ -52,7 +50,7 @@ export default function Tickets() {
                         }}
                         className="inline-flex z-10 items-center px-2.5 py-1.5 border font-semibold border-gray-300 shadow-sm text-xs rounded text-gray-700 bg-white hover:bg-gray-50 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                       >
-                        mark as read
+                        {t("mark_as_read")}
                       </button>
                       <span className="text-xs">
                         {moment(item.createdAt).format("DD/MM/yyyy")}
@@ -65,7 +63,7 @@ export default function Tickets() {
         ) : (
           <div className="min-h-screen flex items-center justify-center">
             <span className="block text-sm font-semibold text-foreground">
-              You have no notifcations
+              {t("no_unread_notifications")}
             </span>
           </div>
         )}

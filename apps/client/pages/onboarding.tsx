@@ -1,11 +1,14 @@
 import { useRouter } from "next/router";
+import useTranslation from "next-translate/useTranslation";
 
 import { getCookie } from "cookies-next";
 import Link from "next/link";
 import { useUser } from "../store/session";
+import { t } from "nextra/dist/types-BhjhW0gX";
 
 export default function Home() {
   const router = useRouter();
+  const { t } = useTranslation("peppermint");
 
   const { user } = useUser();
 
@@ -34,8 +37,7 @@ export default function Home() {
                 Peppermint{" "}
               </h1>
               <p className="text-foreground">
-                Welcome to Peppermint! A fully open sourced ticket management
-                system.
+                {t("label__onboarding_welcome")}
               </p>
             </div>
           </div>
@@ -46,9 +48,7 @@ export default function Home() {
                 <div className="flex flex-col align-center lg:w-[36em]">
                   <span className="font-bold text-lg">Github</span>
                   <span className="max-w-lg  text-xs md:text-md">
-                    Being an open source project, all of our source code can be
-                    housed here. If you ever face a bug or are unsure about
-                    something.
+                    {t("label__onboarding_github")}
                   </span>
                 </div>
                 <Link
@@ -56,7 +56,7 @@ export default function Home() {
                   href="https://github.com/Peppermint-Lab/peppermint"
                   className="rounded-md mt-4 sm:mt-0 bg-gray-600 px-2.5 whitespace-nowrap hover:text-white py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-500 "
                 >
-                  Check it out
+                  {t("label__button__onboarding_check_it_out")}
                 </Link>
               </div>
               <div className="border p-2 md:p-6 rounded-md border-dashed w-full flex flex-col md:flex-row space-x-4 items-center">
@@ -64,9 +64,7 @@ export default function Home() {
                 <div className="flex flex-col align-center lg:w-[36em]">
                   <span className="font-bold text-lg">Docs</span>
                   <span className="max-w-lg text-xs md:text-md">
-                    Documentation for Peppermint can be found here. If you find
-                    something that isnt documented, feel free to open a PR or an
-                    Issue. We'll get straight on it.
+                    {t("label__onboarding_documentation")}
                   </span>
                 </div>
                 <Link
@@ -74,7 +72,7 @@ export default function Home() {
                   href="https://github.com/Peppermint-Lab/peppermint"
                   className="rounded-md flex-end bg-green-600 mt-4 whitespace-nowrap sm:mt-0 px-2.5 py-1.5 text-sm font-semibold hover:text-white text-white shadow-sm hover:bg-green-500 "
                 >
-                  Check it out
+                  {t("label__button__onboarding_check_it_out")}
                 </Link>
               </div>
               <div className="border p-2 md:p-6 rounded-md border-dashed flex flex-col md:flex-row space-x-4 items-center ">
@@ -82,8 +80,7 @@ export default function Home() {
                 <div className="flex flex-col align-center lg:w-[36em]">
                   <span className="font-bold text-lg">Discord</span>
                   <span className="max-w-lg text-xs md:text-md">
-                    Join our discord server to get help from the community or
-                    the developers. Not a bad place to hang out either.
+                    {t("label__onboarding_discord")}
                   </span>
                 </div>
                 <Link
@@ -91,7 +88,7 @@ export default function Home() {
                   href="https://discord.gg/zbTy8nuHnK"
                   className="rounded-md bg-blue-600 mt-4 whitespace-nowrap sm:mt-0 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 "
                 >
-                  Check it out
+                  {t("label__button__onboarding_check_it_out")}
                 </Link>
               </div>
             </div>
@@ -101,7 +98,7 @@ export default function Home() {
               className="bg-green-500 hover:bg-green-600 text-white px-2.5 py-1.5 mr-6 text-sm font-semibold rounded-lg"
               onClick={() => updateFirstLogin()}
             >
-              To Dashboard
+              {t("label__button__onboarding_to_dashboard")}
             </button>
           </div>
         </div>
